@@ -1,0 +1,68 @@
+{
+  "clean": [
+    "dist/**/.DS_Store"
+  ],
+  "scripts": {
+    "src": [
+      "src/*.js"
+    ],
+    "require": {
+      "baseUrl": "src/",
+      "name": "almond",
+      "include": [
+        "meTrapFocus",
+        "matchesPolyfill"
+      ],
+      "out": "dist/me-trap-focus.bundle",
+      "wrap": {
+        "startFile": "src/wrap/start.frag",
+        "endFile": "src/wrap/end.frag"
+      },
+      "paths": {
+        "almond": "../node_modules/almond/almond",
+        "meTrapFocus": "index",
+        "meTools": "me-tools.custom",
+        "variable": "../node_modules/me-tools/src/fn/variable",
+        "element": "../node_modules/me-tools/src/fn/element",
+        "event": "../node_modules/me-tools/src/fn/event",
+        "matchesPolyfill": "../node_modules/me-polyfills/src/matches"
+      },
+      "shim": {
+        "matchesPolyfill": {
+          "exports": "matchesPolyfill"
+        }
+      }
+    },
+    "uglify": {
+      "src": ["src/index.js"],
+      "sourcemap": {
+        "includeContent": false,
+        "sourceRoot" : "../src/"
+      },
+      "rename": "me-trap-focus.min.js"
+    },
+    "dest": "dist",
+    "banner": ["/**",
+      " * @license <%= pkg.name %> <%= pkg.version %> Copyright (c) <%= pkg.author %>",
+      " * Available via the <%= pkg.license %> license.",
+      " * see: <%= pkg.homepage %> for details",
+      " */",
+      ""]
+  },
+  "build": [
+    "clean",
+    "scripts-uglify",
+    "scripts-require",
+    "scripts-require-min"
+  ],
+  "watch": [
+    {
+      "files": [
+        "src/*.js"
+      ],
+      "tasks": [
+        "scripts-require-min"
+      ]
+    }
+  ]
+}

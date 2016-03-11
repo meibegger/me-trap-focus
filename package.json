@@ -1,0 +1,52 @@
+{
+  "name": "me-trap-focus",
+  "version": "1.0.0",
+  "description": "A small utility script to trap the focus within a container element",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meibegger/me-trap-focus.git"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "trap focus",
+    "tab",
+    "back-tab",
+    "focus",
+    "modal",
+    "dialog",
+    "javascript"
+  ],
+  "license": "MIT",
+  "author": "Mandana Eibegger <scripts@schoener.at>",
+  "bugs": {
+    "url": "https://github.com/meibegger/me-trap-focus/issues"
+  },
+  "homepage": "https://github.com/meibegger/me-trap-focus",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "devDependencies": {
+    "almond": "^0.3.1",
+    "del": "^2.2.0",
+    "extend": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.7.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "require-dir": "^0.3.0",
+    "requirejs": "^2.1.22"
+  },
+  "dependencies": {
+    "me-polyfills": "^1.0.0",
+    "me-tools": "^1.0.0"
+  }
+}

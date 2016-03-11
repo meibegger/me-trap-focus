@@ -1,0 +1,26 @@
+{
+  "name": "me-trap-focus",
+  "version": "1.0.0",
+  "homepage": "https://github.com/meibegger/me-trap-focus",
+  "authors": [
+    "Mandana Eibegger <scripts@schoener.at>"
+  ],
+  "description": "A small utility script to trap the focus within a container element",
+  "main": "src/me-trap-focus.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "usability",
+    "scroll",
+    "scrolling background",
+    "lock view",
+    "modal",
+    "javascript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meibegger/me-trap-focus.git"
+  }
+}
