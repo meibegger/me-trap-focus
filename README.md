@@ -70,7 +70,7 @@ To get all elements reachable by back-tab, call
 myFocusTrapper.getTabable(true);
 ```
 
-To destroy the widget, call
+To destroy the instance, call
  
 ```javascript
 myFocusTrapper = myFocusTrapper.destroy();
