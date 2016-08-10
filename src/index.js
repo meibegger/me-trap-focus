@@ -113,7 +113,6 @@
             focusLast.call(that,tabables);
 
             event.preventDefault();
-            event.stopPropagation();
           }
 
         } else {    // tab
@@ -125,7 +124,6 @@
             focusFirst.call(that,tabables);
 
             event.preventDefault();
-            event.stopPropagation();
           }
         }
       }
