@@ -1,5 +1,5 @@
 /**
- * @license me-trap-focus 1.0.0 Copyright (c) Mandana Eibegger <scripts@schoener.at>
+ * @license me-trap-focus 1.0.1 Copyright (c) Mandana Eibegger <scripts@schoener.at>
  * Available via the MIT license.
  * see: https://github.com/meibegger/me-trap-focus for details
  */
@@ -513,7 +513,7 @@ define('variable',[],function () {
         if (Array.isArray(option2) || typeof(option2) !== 'object' || typeof(option1) !== 'object') {
           result[key1] = copyValues(option2);
         } else {
-          result[key1] = mergeobject(option1, option2);
+          result[key1] = mergeObjects(option1, option2);
         }
       } else {
         result[key1] = copyValues(option1);
@@ -684,6 +684,60 @@ define('element',[],function () {
     return false;
   }
 
+  /**
+   * Add 1 or more values to an attribute.
+   *
+   * addAttributeValues(element, attributeName, values)
+   *
+   * @param element DOM-element
+   * @param attributeName string
+   * @param values mixed; string or array of strings
+   */
+  function addAttributeValues(element, attributeName, values) {
+    values = Array.isArray(values) ? values : [values];
+
+    var
+      attributeVal = element.getAttribute(attributeName),
+      currentVals = attributeVal ? attributeVal.split(' ') : [];
+
+    for (var i = 0; i < values.length; i++) {
+      var value = values[i];
+      if (currentVals.indexOf(value) === -1) {
+        currentVals.push(value);
+      }
+    }
+    element.setAttribute(attributeName, currentVals.join(' '));
+  }
+
+  /**
+   * Remove one or more values from an attribute.
+   *
+   * removeAttributeValues(element, attributeName, values)
+   *
+   * @param element DOM-element
+   * @param attributeName string
+   * @param values mixed; string or array of strings
+   */
+  function removeAttributeValues(element, attributeName, values) {
+    var attributeVal = element.getAttribute(attributeName);
+    if (attributeVal) {
+      var
+        expStart = '((^| )',
+        expEnd = '(?= |$))';
+
+      attributeVal = attributeVal.replace(new RegExp(Array.isArray(values) ?
+        expStart + values.join(expEnd + '|' + expStart) + expEnd :
+        expStart + values + expEnd, 'g'),
+        '');
+
+      if (attributeVal) {
+        element.setAttribute(attributeName, attributeVal);
+      } else {
+        element.removeAttribute(attributeName);
+      }
+    }
+  }
+
   /*
    ---------------
    api
@@ -694,7 +748,9 @@ define('element',[],function () {
     getElementById: getElementById,
     getId: getId,
     getAncestors: getAncestors,
-    isParent: isParent
+    isParent: isParent,
+    addAttributeValues: addAttributeValues,
+    removeAttributeValues: removeAttributeValues
   };
 });
 
@@ -1052,7 +1108,6 @@ define('meTools',['variable','element','event'], function (copy,element,event) {
             focusLast.call(that,tabables);
 
             event.preventDefault();
-            event.stopPropagation();
           }
 
         } else {    // tab
@@ -1064,7 +1119,6 @@ define('meTools',['variable','element','event'], function (copy,element,event) {
             focusFirst.call(that,tabables);
 
             event.preventDefault();
-            event.stopPropagation();
           }
         }
       }
