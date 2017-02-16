@@ -1,6 +1,6 @@
 {
   "name": "me-trap-focus",
-  "version": "2.0.0",
+  "version": "1.0.1",
   "description": "A small utility script to trap the focus within a container element",
   "main": "src/index.js",
   "repository": {
