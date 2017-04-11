@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "me-polyfills": "^1.0.0",
-    "me-tools": "^2.0.1"
+    "me-tools": "^3.0.0"
   }
 }

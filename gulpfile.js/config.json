@@ -21,7 +21,7 @@
       "paths": {
         "almond": "../node_modules/almond/almond",
         "meTrapFocus": "index",
-        "meTools": "../node_modules/me-tools/dist/me-tools",
+        "me-tools": "../node_modules/me-tools/dist/me-tools",
         "matchesPolyfill": "../node_modules/me-polyfills/src/matches"
       },
       "shim": {

@@ -1,6 +1,6 @@
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['meTools'], factory);
+    define(['me-tools'], factory);
   } else if (typeof exports === 'object') {
     module.exports = factory(meTools);
   } else {
