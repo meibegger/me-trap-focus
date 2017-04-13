@@ -1,5 +1,5 @@
 /**
- * @license me-trap-focus 3.0.0 Copyright (c) Mandana Eibegger <scripts@schoener.at>
+ * @license me-trap-focus 3.0.1 Copyright (c) Mandana Eibegger <scripts@schoener.at>
  * Available via the MIT license.
  * see: https://github.com/meibegger/me-trap-focus for details
  */
@@ -1260,19 +1260,19 @@ define("almond", function(){});
    */
 
   var
-  /*
-   ---------------
-   constants
-   ---------------
-   */
+    /*
+     ---------------
+     constants
+     ---------------
+     */
 
     KEY_TAB = 9,
 
-  /*
-   ---------------
-   settings
-   ---------------
-   */
+    /*
+     ---------------
+     settings
+     ---------------
+     */
 
 
     defaultOptions = {
@@ -1308,7 +1308,8 @@ define("almond", function(){});
 
     // prepare container
     that.container = containerElement;
-    if (!containerElement.getAttribute('tabindex')) { // add tabindex to the container, so that it can get focus onClick and receives tab-events as target (to prevent tabbing out)
+    if (!containerElement.hasAttribute('tabindex')) { // add tabindex to the container, so that it can get focus onClick and receives tab-events as target (to prevent tabbing out)
+      container.setAttribute('data-tabindexed', 'true');
       containerElement.setAttribute('tabindex', '-1');
     }
     meTools.registerEvent(that, containerElement, 'keydown', function (event) {
@@ -1585,17 +1586,25 @@ define("almond", function(){});
    * @returns {null}
    */
   meTrapFocus.prototype.destroy = function () {
-    var that = this;
+    var
+      that = this,
+      container = that.container;
 
-    initProperties.call(that);
+    if (container.getAttribute('data-tabindexed')) {
+      container.removeAttribute('data-tabindexed');
+      container.removeAttribute('tabindex');
+    }
+
     meTools.unregisterEvent(that);
 
+    initProperties.call(that);
     return null;
   };
 
   return meTrapFocus;
 
 }));
+
 /***********************************************************************************************************************
  * MATCHES
  * Add matches support for all IEs and others (http://caniuse.com/#feat=matchesselector)
