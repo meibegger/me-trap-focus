@@ -1,5 +1,5 @@
 /**
- * @license me-trap-focus 3.0.1 Copyright (c) Mandana Eibegger <scripts@schoener.at>
+ * @license me-trap-focus 3.0.2 Copyright (c) Mandana Eibegger <scripts@schoener.at>
  * Available via the MIT license.
  * see: https://github.com/meibegger/me-trap-focus for details
  */
@@ -1246,9 +1246,15 @@ define("almond", function(){});
   if (typeof define === 'function' && define.amd) {
     define('meTrapFocus',['me-tools'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory(meTools);
+    var
+      meTools = require('me-tools');
+    if (typeof module === 'object') {
+      module.exports = factory(meTools);
+    } else {
+      exports.meTrapFocus = factory(meTools);
+    }
   } else {
-    root.meTrapFocus = factory(meTools);
+    root.meTrapFocus = factory(root.meTools);
   }
 } (this, function(meTools) {
 
