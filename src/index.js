@@ -2,9 +2,15 @@
   if (typeof define === 'function' && define.amd) {
     define(['me-tools'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory(meTools);
+    var
+      meTools = require('me-tools');
+    if (typeof module === 'object') {
+      module.exports = factory(meTools);
+    } else {
+      exports.meTrapFocus = factory(meTools);
+    }
   } else {
-    root.meTrapFocus = factory(meTools);
+    root.meTrapFocus = factory(root.meTools);
   }
 } (this, function(meTools) {
 
